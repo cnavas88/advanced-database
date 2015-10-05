@@ -10,10 +10,11 @@
         </id>
         <property name="nom" type="string" column="nom" />
         <property name="descripcio" type="string" column="descripcio" />
-       <!-- <list name="ingredients" cascade="all-delete-orphan"> 
-            <key column="id_ingredient" /> 
-            <index column="ORDEN" /> 
+        <!--<set name="ingredients" table="ingredient" lazy="true" cascade="all">
+           <key>
+               <column name="id_familiaIngredient" /> 
+           </key>
             <one-to-many class="Ingredient" /> 
-        </list> -->
+        </set>-->
     </class>
 </hibernate-mapping>

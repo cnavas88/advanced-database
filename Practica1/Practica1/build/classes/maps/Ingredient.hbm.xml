@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="practica1">
+    <class name="Ingredient" table="ingredient">                        
+        <id name="id" type="int" column="id_ingredient">
+            <generator class="identity" />
+        </id>
+        <property name="nom" type="string" column="nom" />
+        <property name="refrigeracio" type="boolean" column="refrigeracio" />
+        
+        <many-to-one name="familiaIngredient" class="FamiliaIngredient" fetch="select">
+           <column name="id_familiaIngredient" /> <!-- CAMP FK de la taula articulo IDENTICS A LES DUES ENTITATS --> 
+        </many-to-one>
+    </class>
+</hibernate-mapping>

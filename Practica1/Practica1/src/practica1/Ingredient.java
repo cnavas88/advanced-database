@@ -20,10 +20,9 @@ public class Ingredient  implements java.io.Serializable{
     public Ingredient(){  }
     
     /* Constructor with parameters */
-    public Ingredient( String nom, boolean refrigeracio, FamiliaIngredient familia ){
+    public Ingredient( String nom, boolean refrigeracio ){
         this.nom = nom;
         this.refrigeracio = refrigeracio;
-        this.familiaIngredient = familia;
     }
     
     /* Getters and Setters */

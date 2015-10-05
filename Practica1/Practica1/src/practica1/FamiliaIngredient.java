@@ -7,6 +7,7 @@ package practica1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -17,7 +18,7 @@ public class FamiliaIngredient implements java.io.Serializable{
     private int id;
     private String nom;
     private String descripcio;
-    private List<Ingredient> ingredients = new ArrayList<Ingredient>();  
+    private Set<Ingredient> ingredients;  // Afegim cardinalitat N
     
     /* Constructors */
     public FamiliaIngredient(){  }
@@ -47,17 +48,15 @@ public class FamiliaIngredient implements java.io.Serializable{
     public int getId() {
        return this.id;
     }
-    public List getIngredients() { 
+    public Set<Ingredient> getIngredients() { 
         return ingredients; 
     }  
 
-    public void setIngredients(List ingredients) 
-    { 
+    public void setIngredients(Set<Ingredient> ingredients) { 
         this.ingredients = ingredients; 
     }  
 
-    public void addIngredient(Ingredient ingredient) 
-    { 
+    public void addIngredient(Ingredient ingredient) { 
         this.ingredients.add(ingredient); 
     } 
     

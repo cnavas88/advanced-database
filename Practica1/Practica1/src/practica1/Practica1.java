@@ -27,64 +27,74 @@ public class Practica1 {
     private static final InputStreamReader isr = new InputStreamReader(System.in);
     private static final BufferedReader br = new BufferedReader(isr);
     
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         boolean exit = false;
         do{
             System.out.println(MENU_TABLES);
             try{     
-                int opt = Integer.parseInt(br.readLine()); // TRY - IOEXception readLine()
-                if( opt != 6 ){
+                int opt = Integer.parseInt(br.readLine()); 
+                if( opt >= 1 && opt <= 5 ){
                     menu(opt);
                 }else if( opt == 6){
                     exit = true;
                 }else{
-                    System.out.println("Incorrect option");
+                    System.out.println("Error: Opcion incorrecta.");
                 }
+            }catch(IOException ioe){
+                System.out.println("ERROR: No se ha podido leer el campo.");
             }catch(NumberFormatException nfe){
-                System.out.println("ERROR: NEcesito un numero: " + nfe);
+                System.out.println("ERROR: Se esperaba un numero.");
             }
         }while(exit == false);
     }
     
-    private static void menu( int opt_menu ) throws IOException{
+    private static void menu( int opt_menu ) {
         boolean exit = false;
         do{
             System.out.println(MENU);
-            int opt = Integer.parseInt(br.readLine());  // try - EXCEPTION READLINE()
-            switch(opt){
-                case 1: if(opt_menu == 1){insertRecepta();}
-                        else if(opt_menu == 2){insertPlat();}
-                        else if(opt_menu == 3){insertTipusMenjar();}
-                        else if(opt_menu == 4){insertChef();}
-                        else if(opt_menu == 5){insertIngredient();}
-                        break;
-                case 2: if(opt_menu == 1){updateRecepta();}
-                        else if(opt_menu == 2){updatePlat();}
-                        else if(opt_menu == 3){updateTipusMenjar();}
-                        else if(opt_menu == 4){updateChef();}
-                        else if(opt_menu == 5){updateIngredient();}
-                        break;
-                case 3: if(opt_menu == 1){deleteRecepta();}
-                        else if(opt_menu == 2){deletePlat();}
-                        else if(opt_menu == 3){deleteTipusMenjar();}
-                        else if(opt_menu == 4){deleteChef();}
-                        else if(opt_menu == 5){deleteIngredient();}
-                        break;
-                case 4: System.out.println("Quieres listar (0) o solo un item (1):");
-                        int list = Integer.parseInt(br.readLine());
-                        if( list == 0 || list ==1 ){
-                            if(opt_menu == 1){listRecepta(list);}
-                            else if(opt_menu == 2){listPlat(list);}
-                            else if(opt_menu == 3){listTipusMenjar(list);}
-                            else if(opt_menu == 4){listChef(list);}
-                            else if(opt_menu == 5){listIngredient(list);}
-                        }else{
-                            System.out.println("Opcion Incorrecta");
-                        }
-                        break;
-                case 5: exit = true; break;
-                default: System.out.println("Incorrect option");
-            }     
+            try{
+                int opt = Integer.parseInt(br.readLine());  
+                switch(opt){
+                    case 1: if(opt_menu == 1){insertRecepta();}
+                            else if(opt_menu == 2){insertPlat();}
+                            else if(opt_menu == 3){insertTipusMenjar();}
+                            else if(opt_menu == 4){insertChef();}
+                            else if(opt_menu == 5){insertIngredient();}
+                            break;
+                    case 2: if(opt_menu == 1){updateRecepta();}
+                            else if(opt_menu == 2){updatePlat();}
+                            else if(opt_menu == 3){updateTipusMenjar();}
+                            else if(opt_menu == 4){updateChef();}
+                            else if(opt_menu == 5){updateIngredient();}
+                            break;
+                    case 3: if(opt_menu == 1){deleteRecepta();}
+                            else if(opt_menu == 2){deletePlat();}
+                            else if(opt_menu == 3){deleteTipusMenjar();}
+                            else if(opt_menu == 4){deleteChef();}
+                            else if(opt_menu == 5){deleteIngredient();}
+                            break;
+                    case 4: System.out.println("Quieres listar (0) o solo un item (1):");
+                            int list = Integer.parseInt(br.readLine());
+                            if( list == 0 || list ==1 ){
+                                if(opt_menu == 1){listRecepta(list);}
+                                else if(opt_menu == 2){listPlat(list);}
+                                else if(opt_menu == 3){listTipusMenjar(list);}
+                                else if(opt_menu == 4){listChef(list);}
+                                else if(opt_menu == 5){listIngredient(list);}
+                            }else{
+                                System.out.println("Error: Opcion Incorrecta.");
+                            }
+                            break;
+                    case 5: exit = true; break;
+                    default: System.out.println("Error: Opcion Incorrecta.");
+                }                     
+            }catch(NumberFormatException nfe){
+                System.out.println("ERROR: Se esperaba un numero.");
+            }catch( NullPointerException npe ){
+                System.out.println("ERROR: No existe el identificador.");
+            }catch( IOException ioe ){
+                System.out.println("ERROR: No se ha podido el campo.");
+            }
         }while(exit == false);
     }
     
@@ -100,16 +110,20 @@ public class Practica1 {
         System.out.println("Chef insertado: "+ident+",nom: "+chef.getNom()+",estrelles: "+chef.getEstrelles());    
     }
     
-    private static void listChef( int list ) throws IOException{
+    private static void listChef( int list ) throws IOException, NullPointerException{
         ChefCRUD chefCRUD = new ChefCRUD();
         if( list == 1 ){
             // listamos 1 elemento
+            System.out.println("Identificador del elemento a lista: ");
+            int ident = Integer.parseInt(br.readLine());
+            Chef c = chefCRUD.getChef(ident); 
+            System.out.println("Chef --> ID: " + c.getId() + ", nom: "+c.getNom()+", estrelles: " + c.getEstrelles()); 
         }else{
             // listamos todos los elementos
             List<Chef> listachefs = chefCRUD.getListChef();
             System.out.println("Hay " + listachefs.size() + " chefs en la base de datos");  
             for(Chef c : listachefs){ 
-                System.out.println("-> " + c.getNom()); 
+                System.out.println("--> ID: " + c.getId() + ", nom: "+c.getNom()+", estrelles: " + c.getEstrelles()); 
             }   
         }          
     }
@@ -123,7 +137,7 @@ public class Practica1 {
     }
     
     private static void insertRecepta(){
-        platCRUD platCRUD = new platCRUD(); 
+    /*    platCRUD platCRUD = new platCRUD(); 
         System.out.println("Dime el nombre del chef:");
         String nom = br.readLine();
         System.out.println("Dime la cantidad de estrellas que tiene:");
@@ -132,7 +146,7 @@ public class Practica1 {
         int ident = platCRUD.savePlat(plat); 
         // TODO - aqui falta comprobar si se ha insertado
         System.out.println("Chef insertado: "+ident+",nom: "+chef.getNom()+",estrelles: "+chef.getEstrelles());     
-    }
+    */}
     
     private static void deleteRecepta(){
         System.out.println("delete recepta");
