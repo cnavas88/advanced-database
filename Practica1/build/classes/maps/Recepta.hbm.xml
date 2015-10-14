@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="practica1">
+    <class name="Recepta" table="recepta">                        
+        <id name="id" type="int" column="id_recepta">
+            <generator class="identity" />
+        </id>
+        <property name="nom" type="string" column="nom" />
+        <property name="temps" type="string" column="temps" />
+        <property name="dificultat" type="int" column="dificultat" />
+        <property name="elaboracio" type="text" column="elaboracio" />        
+        
+        <many-to-one name="chef" class="Chef" fetch="select">
+           <column name="id_chef" />  
+        </many-to-one> 
+        
+        <many-to-one name="plat" class="Plat" fetch="select">
+           <column name="id_plat" />  
+        </many-to-one> 
+        
+        <many-to-one name="tipusDeMenjar" class="TipusDeMenjar" fetch="select">
+           <column name="id_tipusDeMenjar" />  
+        </many-to-one> 
+        
+        <set name="ingredients" table="conte" >
+            <key column="id_recepta" />
+            <many-to-many column="id_ingredient" class="Ingredient" />
+        </set>  
+    </class>
+</hibernate-mapping>

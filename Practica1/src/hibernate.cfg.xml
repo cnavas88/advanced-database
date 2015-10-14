@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/cuinaub</property>
+    <property name="hibernate.connection.username" >postgres</property>
+    <property name="hibernate.connection.password" ><!--postgres-->db1</property>
+    
+    <!-- Configuracion del pool interno -->
+    <property name="connection.pool_size">1</property>
+    
+    <!-- Definimos propiedades de Hibernate para SQL -->
+    <property name="show_sql">false</property>
+    <property name="format_sql">true</property>
+
+    
+    <!-- Declaramos los archivos de mapping-->
+    <mapping resource="maps/Chef.hbm.xml"/>
+    <mapping resource="maps/Plat.hbm.xml"/>
+    <mapping resource="maps/TipusDeMenjar.hbm.xml"/>
+    <mapping resource="maps/FamiliaIngredient.hbm.xml"/>
+    <mapping resource="maps/Ingredient.hbm.xml"/>
+    <mapping resource="maps/Recepta.hbm.xml"/>
+    <mapping resource="maps/Usuari.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

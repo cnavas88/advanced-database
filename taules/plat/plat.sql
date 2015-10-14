@@ -1,0 +1,5 @@
+CREATE TABLE plat(
+	id_plat SERIAL PRIMARY KEY,
+	nom VARCHAR(32) NOT NULL,
+	descripcio TEXT	NOT NULL
+);

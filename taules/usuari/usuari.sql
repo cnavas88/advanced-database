@@ -1,0 +1,5 @@
+CREATE TABLE usuari(
+	id_user SERIAL PRIMARY KEY,
+	alias VARCHAR(32) NOT NULL,
+	pass VARCHAR(32) NOT NULL
+);

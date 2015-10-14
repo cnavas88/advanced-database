@@ -1,0 +1,5 @@
+CREATE TABLE chef(
+	id_chef SERIAL PRIMARY KEY,
+	nom VARCHAR(32) NOT NULL,
+	estrelles INTEGER NOT NULL
+);
