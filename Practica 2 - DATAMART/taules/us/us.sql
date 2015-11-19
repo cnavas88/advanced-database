@@ -1,0 +1,5 @@
+CREATE TABLE us(
+	id_us SERIAL PRIMARY KEY,
+	nom VARCHAR(32) NOT NULL,
+	descripcio TEXT	NOT NULL
+);

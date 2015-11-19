@@ -1,7 +1,0 @@
-chef(id_chef, nom, estrelles)
-plat(id_plat, nom, descripcio)
-tipusDeMenjar(id_tipusDeMenjar, nom, descripcio)
-familiaIngredient(id_familiaIngredient, nom, descripcio)
-ingredient(id_ingredient, nom, refrigeracio, id_familiaIngredient)
-recepta(id_recepta, nom, temps, dificultat, elaboracio, id_chef, id_plat, id_tipusDeMenjar)
-conte(id_recepta, id_ingredient)

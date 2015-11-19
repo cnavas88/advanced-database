@@ -1,8 +1,0 @@
-\echo - fent inserts de taula plat
-
-
-INSERT INTO plat (nom, descripcio) VALUES
-  ('Calamars a la Romana', 'Los calamares fritos, en ocasiones también denominados calamares a la romana o rabas en Cantabria, Asturias, Navarra y País Vasco, es un plato preparado a base de calamares fritos rebozados en harina que se puede encontrar en muchos bares y restaurantes de los países que disfrutan de la cocina mediterránea y atlántica.'),
-  ('Albondigas', 'Una albóndiga es una bola de carne picada, generalmente de res y a veces de pescado mezclada con huevos y diversos condimentos, tales como perejil, comino, etcétera; aunque también hay una variable vegetariana hecha a base de seitán. La albóndiga es tan popular en las diferentes gastronomías y tiene tantas recetas que resulta ser un hiperónimo acerca de un alimento.'),
-  ('Merluza a la andaluza', 'Merluza (en latín Merluccius, ‘lucio de mar’, debido al parecido con el pez carnívoro de agua dulce) es el nombre común de varios peces marinos del orden de los gadiformes. Estos peces realizan dos tipos de migraciones: una de carácter diario, ascendiendo durante la noche a las capas superiores del mar para alimentarse y descendiendo durante el día, y otra de tipo estacional, relacionada al ciclo reproductivo de cada especie.'),
-  ('Mejillones en escabeche', 'Los mitílidos (Mytilidae), conocidos comúnmente como mejillones o choros (en algunas partes de América del Sur), son una familia de moluscos bivalvos de gran interés económico y gastronómico. Como otros bivalvos, son animales filtradores que viven fijados al sustrato. Son exclusivamente marinos y viven tanto en zonas intermareales como zonas sumergidas de las costas de todo el mundo.');
